@@ -6,20 +6,20 @@
           <th>Id</th>
           <th>Nom Chanson</th>
           <th>Nom Artiste</th>
-          <th>Genre</th>
           <th>Duree</th>
           <th>Vues</th>
           <th>Date Sortie</th>
+          <th>Genre</th>
         </tr>
         <tbody>
           <tr *ngFor="let chanson of chansons">
             <td>{{ chanson.idChanson }}</td>
             <td>{{ chanson.nomChanson }}</td>
             <td>{{ chanson.nomArtiste }}</td>
-            <td>{{ chanson.genre }}</td>
             <td>{{ chanson.duree }}</td>
             <td>{{ chanson.vues }}</td>
             <td>{{ chanson.dateSortie | date : "dd/MM/yyyy" }}</td>
+            <td>{{ chanson.genre.nomGen }}</td>
             <td>
               <a class="btn btn-danger" (click)="supprimerChanson(chanson)"
                 >Supprimer</a

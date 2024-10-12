@@ -1,56 +1,71 @@
 import { Injectable } from '@angular/core';
 import { chanson } from '../model/chanson.model';
+import { Genre } from '../model/genre.model';
+
 @Injectable({
   providedIn: 'root',
 })
 export class chansonService {
   chansons: chanson[]; //un tableau de chanson
+  genres: Genre[];
+
   constructor() {
+    this.genres = [
+      { idGen: 1, nomGen: 'HipHop' },
+      { idGen: 2, nomGen: 'Pop' },
+      { idGen: 3, nomGen: 'Rap' },
+      { idGen: 4, nomGen: 'Rock' },
+      { idGen: 5, nomGen: 'Musique électronique	' },
+      { idGen: 6, nomGen: 'Jazz' },
+      { idGen: 7, nomGen: 'Chanson française	' },
+      { idGen: 8, nomGen: 'Autre' },
+    ];
+
     this.chansons = [
       {
         idChanson: 1,
         nomChanson: 'UZI',
         nomArtiste: 'A.L.A',
-        genre: 'HipHop',
         duree: 4.36,
         vues: '6.7 M',
         dateSortie: new Date('08/20/2017'),
+        genre: { idGen: 1, nomGen: 'HipHop' },
       },
       {
         idChanson: 2,
         nomChanson: 'S.A.F.E',
         nomArtiste: 'A.L.A',
-        genre: 'HipHop',
         duree: 5.22,
         vues: '22 M',
         dateSortie: new Date('07/27/2017'),
+        genre: { idGen: 1, nomGen: 'HipHop' },
       },
       {
         idChanson: 3,
         nomChanson: 'AADHEBI',
         nomArtiste: 'A.L.A',
-        genre: 'HipHop',
         duree: 4.04,
         vues: '2.8 M',
         dateSortie: new Date('07/29/2024'),
+        genre: { idGen: 1, nomGen: 'HipHop' },
       },
       {
         idChanson: 4,
         nomChanson: 'Feu Rouge',
         nomArtiste: 'Samara',
-        genre: 'HipHop',
         duree: 4.18,
         vues: '9.3 M',
         dateSortie: new Date('06/24/2024'),
+        genre: { idGen: 1, nomGen: 'HipHop' },
       },
       {
         idChanson: 5,
         nomChanson: 'Pour Les Gang',
         nomArtiste: 'Samara',
-        genre: 'HipHop',
         duree: 5.08,
         vues: '46 M',
         dateSortie: new Date('05/14/2023'),
+        genre: { idGen: 1, nomGen: 'HipHop' },
       },
     ];
   }
@@ -96,5 +111,13 @@ export class chansonService {
     this.supprimerChanson(ch);
     this.ajouterchanson(ch);
     this.trierChansons();
+  }
+
+  listeGenres(): Genre[] {
+    return this.genres;
+  }
+
+  consulterGenre(id: number): Genre {
+    return this.genres.find((gen) => gen.idGen == id)!;
   }
 }
